@@ -1,0 +1,29 @@
+#!/bin/bash
+
+if [ -z "$1" ]; then
+  echo '' && echo 'Please also provide server name as in config file...' &&
+  exit 1
+fi
+
+retries=0
+repeat=true
+today=$(date)
+
+while "$repeat"; do
+((retries+=1)) &&
+echo "Try number $retries..." &&
+today=$(date) &&
+ssh -q -o "StrictHostKeyChecking no" "$1" "hostname" &&
+if [[ $2 == app02 ]]; then
+yum install httpd -y
+fi
+
+repeat=false
+sleep 5
+done
+
+
+echo "Total number of tries: $retries"
+echo "Last connection at: $today"
+
+

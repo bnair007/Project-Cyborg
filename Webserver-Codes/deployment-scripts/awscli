@@ -1,0 +1,21 @@
+#!/bin/bash
+imageid="$2"
+instancet="$3"
+subnet="$4"
+volume="$5"
+hostname="$1"
+
+cat <<EOF> /tmp/test
+aws ec2 run-instances \
+--image-id $imageid \
+--count 1 \
+--instance-type $instancet \
+--key-name Bijith-Public \
+--security-group-ids sg-1f5e5676 \
+--subnet-id $subnet \
+--block-device-mappings "[{\"DeviceName\": \"/dev/sda1\",\"Ebs\":{\"VolumeType\":\"gp2\",\"VolumeSize\":$volume}}]" \
+--tag-specifications 'ResourceType=instance,Tags=[{Key=Name,Value=$hostname}]' 'ResourceType=volume,Tags=[{Key=Name,Value=$hostname}]'
+EOF
+#echo $awscli > /tmp/test
+#echo "ssh 192.168.133.210 "`cat /tmp/test`""
+for i in 192.168.133.210; do ssh $i "`cat /tmp/test`"; done

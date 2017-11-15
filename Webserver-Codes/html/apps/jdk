@@ -1,0 +1,5 @@
+#!/bin/bash
+
+echo "-- Script to install JDK-8 --"
+
+sudo /usr/bin/ssh root@$1 yum install java-1.8.0-openjdk*

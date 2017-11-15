@@ -1,0 +1,5 @@
+#!/bin/bash
+
+echo " -- Script to install NPM -- "
+
+sudo /usr/bin/ssh root@$1 yum install npm -y 

@@ -1,0 +1,7 @@
+#!/bin/bash
+
+echo " -- Script to install def -- "
+
+#yum install
+
+sudo /usr/bin/ssh root@$1 touch anshul-def.txt; ls; 

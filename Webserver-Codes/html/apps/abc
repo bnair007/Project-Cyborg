@@ -1,0 +1,9 @@
+#!/bin/bash
+
+echo " -- Script to install abc -- "
+
+#yum install 
+
+
+
+sudo /usr/bin/ssh root@$1 touch anshul-abc.txt; ls;

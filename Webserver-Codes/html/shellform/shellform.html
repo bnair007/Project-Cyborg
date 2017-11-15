@@ -1,0 +1,44 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Server Build Form </title>
+</head>
+<link href="stylesheets/common.css" type="text/css" rel="stylesheet">
+<br /><br />
+<br /><br />
+<br /><br />
+<br /><br />
+<br /><br />
+<fieldset>
+<body>
+<h1><center>Server Build Form</center></h1>
+
+<form method="post" action="http://192.168.133.177/shellform/shellform2.php">
+<center>Hostname: <center>
+<input type="text" name="hostname" size="35" />
+<br />
+<br />
+Select an Application: <br />
+<select name="app">
+    <option value="#"></option>
+    <optgroup label="Websites">
+    <option value="8">Hitachi Dev Site</option>
+    </optgroup>
+    <optgroup label="Centos">
+    <option value="4">Infrastructure_Minimal CentOS - V6</option>
+    <option value="5">Infrastructure_Minimal CentOS - V7</option>
+    </optgroup>
+    <optgroup label="Oracle Linux">
+    <option value="2">Infrastructure_Minimal Oracle Linux - V6</option>
+    <option value="3">Infrastructure_Minimal Oracle Linux - V7</option>
+    </optgroup>
+   </select>
+<br />
+<br />
+
+<input type="submit" value="Submit the Build" />
+<br />
+</form>
+</fieldset>
+</body>
+</html>

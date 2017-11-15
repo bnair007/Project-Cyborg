@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Server Catalog</title>
+<style>
+* {
+    box-sizing: border-box;
+}
+
+.columns {
+    float: left;
+    width: 23.3%;
+    padding: 28px;
+}
+
+.price {
+    list-style-type: none;
+    border: 1px solid #eee;
+    margin: 0;
+    padding: 0;
+    -webkit-transition: 0.3s;
+    transition: 0.3s;
+}
+
+.price:hover {
+    box-shadow: 0 8px 12px 0 rgba(0,0,0,0.2)
+}
+
+.price .header {
+    background-color: #111;
+    color: white;
+    font-size: 18px;
+}
+
+.price li {
+    border-bottom: 1px solid #eee;
+    padding: 20px;
+    text-align: center;
+}
+
+.price .grey {
+    background-color: #eee;
+    font-size: 18px;
+}
+
+.button {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 10px 25px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 15px;
+}
+
+@media only screen and (max-width: 600px) {
+    .columns {
+        width: 100%;
+    }
+}
+</style>
+</head>
+<body>
+<h2 style="text-align:center">Hitachi Compute Offerings Catalog</h2>
+
+
+<div class="columns">
+  <ul class="price">
+    <li class="header">Amazon Web Services</li>
+    <li class="grey">Public Cloud Services</li>
+    <li>Storage - On Demand</li>
+    <li>VCPU's - On Demand</li>
+    <li>RAM - On Demand</li>
+    <li>Services - On Demand</li>
+    <li class="grey"><a href="http://192.168.133.132/forms/modules/form_builder/published/hcccloud.php" class="button">Submit Request</a></li>
+
+  </ul>
+</div>
+
+<div class="columns">
+  <ul class="price">
+    <li class="header" style="background-color:#4CAF50">Azure</li>
+    <li class="grey">Public Cloud Services</li>
+    <li>Storage - On Demand</li>
+    <li>VCPU's - On Demand</li>
+    <li>RAM - On Demand</li>
+    <li>Services - On Demand</li>
+    <li class="grey"><a href="http://192.168.133.132/forms/modules/form_builder/published/hcccloud.php" class="button">Submit Request</a></li>
+  </ul>
+</div>
+
+<div class="columns">
+  <ul class="price">
+    <li class="header">Vmware</li>
+    <li class="grey">On Prem</li>
+    <li>Storage - On Demand</li>
+    <li>VCPU's - On Demand</li>
+    <li>RAM - On Demand</li>
+    <li>Services - On Demand</li>
+    <li class="grey"><a href="http://192.168.133.132/forms/modules/form_builder/published/hcccloud.php" class="button">Submit request</a></li>
+  </ul>
+</div>
+
+<div class="columns">
+  <ul class="price">
+    <li class="header" style="background-color:#4CAF50">Oracle VM</li>
+    <li class="grey">On Prem</li>
+    <li>Storage - On Demand</li>
+    <li>VCPU's - On Demand</li>
+    <li>RAM - On Demand</li>
+    <li>Services - On Demand</li>
+    <li class="grey"><a href="http://192.168.133.132/forms/modules/form_builder/published/hcccloud.php" class="button">Submit request</a></li>
+  </ul>
+</div>
+
+<form method="post" action="http://192.168.133.177/shellform/shellform2.php">
+
+<div class="columns">
+  <ul class="price">
+    <li class="header">Centos Linux Basic</li>
+    <li class="grey">On Prem - Vmware</li>
+    <li><input type="text" name="hostname" placeholder="Enter the Hostname"/></li>
+    <li><select name="app">
+    <li><option value="#"></option></li>
+    <li><option value="4">Version 6</option></li>
+    <li><option value="5">Version 7</option></li>
+    </select></li>
+    <li>20GB Storage</li>
+    <li>1 VCPU</li>
+    <li>2 GB RAM</li>
+    <li class="grey"><input type="submit" class="button" value="Build Now"/></li>
+
+  </ul>
+</div>
+</form>
+
+<form method="post" action="http://192.168.133.177/shellform/shellform2.php">
+
+<div class="columns">
+  <ul class="price">
+    <li class="header" style="background-color:#4CAF50" >Oracle Linux Basic</li>
+    <li class="grey">On Prem - Vmware</li>
+    <li><input type="text" name="hostname" placeholder="Enter the Hostname"/></li>
+    <li><select name="app">
+    <li><option value="#"></option></li>
+    <li><option value="2">Version 6</option></li>
+    <li><option value="3">Version 7</option></li>
+    </select></li>
+    <li>20GB Storage</li>
+    <li>1 VCPU</li>
+    <li>2 GB RAM</li>
+    <li class="grey"><input type="submit" class="button" value="Build Now"/></li>
+
+  </ul>
+</div>
+</form>
+<form method="post" action="http://192.168.133.177/shellform/shellform2.php">
+
+<div class="columns">
+  <ul class="price">
+    <li class="header" >Bundled Deployment</li>
+    <li class="grey">On Prem - Vmware</li>
+    <li><input type="text" name="hostname" placeholder="Enter the Hostname"/></li>
+    <li><select name="app">
+    <li><option value="#"></option></li>
+    <li><option value="8">Hitachi Devlopment Site</option></li>
+    </select></li>
+    <li>20GB Storage</li>
+    <li>1 VCPU</li>
+    <li>2 GB RAM</li>
+    <li class="grey"><input type="submit" class="button" value="Build Now"/></li>
+
+  </ul>
+</div>
+</form>
+
+<form method="post" action="http://192.168.133.177/shellform/shellform2.php">
+
+<div class="columns">
+  <ul class="price">
+    <li class="header" style="background-color:#4CAF50" >Windows</li>
+    <li class="grey">On Prem - BYOL</li>
+    <li><input type="text" name="hostname" placeholder="Enter the Hostname"/></li>
+    <li><select name="app">
+    <li><option value="#"></option></li>
+    <li><option value="2">Windows 2012 R2</option></li>
+    <li><option value="3">Windwos 2008</option></li>
+    </select></li>
+    <li>20GB Storage</li>
+    <li>1 VCPU</li>
+    <li>2 GB RAM</li>
+    <li class="grey"><input type="submit" class="button" value="Build Now"/></li>
+
+  </ul>
+</div>
+</form>
+
+<form method="post" action="http://192.168.133.177/shellform/shellform2.php">
+
+<div class="columns">
+  <ul class="price">
+    <li class="header" >Bundled Deployment-Preview</li>
+    <li class="grey">Centos Linux</li>
+    <li><input type="text" name="hostname" placeholder="Enter the Hostname"/></li>
+    <center><br> Operating System </br></center>
+    <li><select name="app">
+    <li><option value="#"></option></li>
+    <li><option value="4">Version 6</option></li>
+    <li><option value="5">Version 7</option></li>
+    </select></li>
+    </br><center>Select an Application to deploy</center>
+    <li><input type="checkbox"  name="app01" value="app01"> Postgresql<br>
+    <input type="checkbox" style="margin-left: 3px" name="app02" value="app02"> webserver<br></select></li>
+
+    <li>20GB Storage</li>
+    <li>1 VCPU</li>
+    <li>2 GB RAM</li>
+    <li class="grey"><input type="submit" class="button" value="Build Now"/></li>
+
+  </ul>
+</div>
+</form>
+
+<form method="post" action="http://192.168.133.177/shellform/awsform.php">
+
+<div class="columns">
+  <ul class="price">
+    <li class="header" style="background-color:#4CAF50" >AWS</li>
+    <li class="grey">Public Cloud Services</li>
+    <li><input type="text" name="hostname" placeholder="Enter the Hostname"/></li>
+    <center><br> Operating System </br></center>
+    <li><select name="os">
+    <li><option value="#"></option></li>
+    <li><option value="ami-2ed19c41">Amazon Linux</option></li>
+    <li><option value="ami-e41b618b">Redhat 7 - latest</option></li>
+    <li><option value="ami-5444393b">Redhat 6 - latest</option></li>
+    <li><option value="ami-11f0837e">Centos 7 - latest</option></li>
+    <li><option value="ami-03d6906c">Centos 6 - latest</option></li>
+    <li><option value="ami-16612479">Oracle Linux 7 - latest</option></li>
+    <li><option value="ami-29651646">Oracle Linux 6 - latest</option></li>
+    <li><option value="ami-ac3370c3">Microsoft Windows Server 2016 Base</option></li>
+    <li><option value="ami-27286b48">Microsoft Windows Server 2012 R2 Base</option></li>
+    <li><option value="ami-8a296ae5">Microsoft Windows Server 2008 R2 Base </option></li>
+    </select></li>
+    <center><br>Instance Type</br></center>
+    <li><select name="InstanceType">
+    <li><option value="#"></option></li>
+    <li><option value="t2.micro">t2.micro</option></li>
+    <li><option value="t2.small">t2.small</option></li>
+    <li><option value="t2.medium">t2.medium</option></li>
+    <li><option value="t2.large">t2.large</option></li>
+    <li><option value="t2.xlarge">t2.xlarge</option></li>
+    <li><option value="t2.2xlarge">t2.2xlarge</option></li>
+    <li><option value="m1.small">m1.small</option></li>
+    <li><option value="m1.medium">m1.medium</option></li>
+    <li><option value="m1.large">m1.large</option></li>
+    <li><option value="m1.xlarge">m1.xlarge</option></li>
+    <li><option value="m3.medium">m3.medium</option></li>
+    <li><option value="m3.large">m3.large</option></li>
+    <li><option value="m3.xlarge">m3.xlarge</option></li>
+    <li><option value="m3.2xlarge">m3.2xlarge</option></li>
+    <li><option value="c1.medium">c1.medium</option></li>
+    <li><option value="c1.xlarge">c1.xlarge</option></li>
+    <li><option value="c3.large">c3.large</option></li>
+    <li><option value="c3.xlarge">c3.xlarge</option></li>
+    <li><option value="c4.large">c4.large</option></li>
+    <li><option value="c4.2xlarge">c4.2xlarge</option></li>
+    </select></li>  
+    <center><br>Network</br></center>
+    <li><select name="Network"><li><option value="#"></option></li>
+    <li><option value="subnet-61391d2c">Infrastructure Internal</option></li>
+    <li><option value="subnet-3386f05a">Infrastructure DMZ</option></li>
+    </select></li>
+    <center><br>Volume Size</br></center>
+    <li><input type="text" name="Volumesize" placeholder="Enter the value"/></li>
+    <li class="grey"><input type="submit" class="button" value="Build Now"/></li>
+
+  </ul>
+</div>
+</form>
+
+
+</body>
+</html>
+

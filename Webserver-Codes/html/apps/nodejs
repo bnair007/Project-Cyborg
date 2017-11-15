@@ -1,0 +1,9 @@
+#!/bin/bash
+
+echo " -- Script to install Node-JS -- "
+
+#touch anshul-nodejs.txt
+
+sudo /usr/bin/ssh root@$1  yum install nodejs -y
+
+

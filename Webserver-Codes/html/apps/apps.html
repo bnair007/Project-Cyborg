@@ -1,0 +1,41 @@
+<html>
+
+<title>
+Apps
+</title>
+
+<body>
+	<form action="phpapp.php" method="post">
+	
+	<fieldset>		
+	
+		<h1><center> Application Installing Form </center></h1>
+
+		<br><br><br>	
+		<b>Enter the Hostname/IP of the VM :</b>
+		
+		<input type="textbox" name="hostname" value=" "/> <br><br/>
+
+		
+		<br><br><br>	
+	
+		<b> Select the applications you want to install :<br><br><br> </b>
+		
+		<input type="checkbox" name="formDoor[]" value="nodejs" />Node-JS<br><br />
+		<input type="checkbox" name="formDoor[]" value="jdk8" />JDK-8<br><br />
+		<input type="checkbox" name="formDoor[]" value="npm" />NPM<br><br />
+		<input type="checkbox" name="formDoor[]" value="abc" />ABC<br><br />
+		<input type="checkbox" name="formDoor[]" value="def" />DEF<br><br />
+
+		<br><br><br>
+
+		<input type="submit" name="formSubmit" value="Install" />
+
+	</fieldset>
+
+	</form>
+
+</body>
+
+</html>
+

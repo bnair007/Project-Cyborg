@@ -1,6 +1,6 @@
 # Foreman Code repository Log History
 
-> Author : *Bijith Nair*
+> Author : ***Bijith Nair***
 
 > 1) **Code to dynamically install application as a part of post provisioning process**
 

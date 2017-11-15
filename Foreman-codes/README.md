@@ -117,6 +117,15 @@ hammer -u $USER -p $PASS host start --name $hostname.testlab.local
 > 6) **Software repository**
 
 `Software repository contains all kinds of codes and packages which are being used during the process of vm provisioning`
+====
 
+> 6) **Post Provisioning Validator Scripts**
+
+#### post-provision.sh
+#### spacewalkcheck.sh
+
+`Script to validate all services are up and running post provisioning of instances on-prem or on cloud`
+
+====
 
 ## awsdeploy : Still in Progress

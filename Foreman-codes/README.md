@@ -117,7 +117,8 @@ hammer -u $USER -p $PASS host start --name $hostname.testlab.local
 > 6) **Software repository**
 
 `Software repository contains all kinds of codes and packages which are being used during the process of vm provisioning`
-====
+
+===
 
 > 6) **Post Provisioning Validator Scripts**
 

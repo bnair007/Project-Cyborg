@@ -1,0 +1,16 @@
+<%#
+kind: ptable
+name: Kickstart default
+oses:
+- CentOS
+- Fedora
+- RedHat
+%>
+zerombr
+clearpart --all --initlabel
+part /boot --fstype="ext4" --size=500
+part swap --fstype="swap" --size=2048
+part /var --fstype="ext4" --size=5000
+part /tmp --fstype="ext4" --size=5000
+part / --fstype="ext4" --grow --size=1
+

@@ -1,0 +1,48 @@
+#! /bin/bash
+
+rootpw --iscrypted <%= root_pass %>
+<% if @host.param_true?('disable-firewall') -%>
+<% else -%>
+firewall --disabled
+<% end -%>
+authconfig --useshadow --passalgo=<%= @host.operatingsystem.password_hash || 'sha256' %> --kickstart
+timezone --utc <%= @host.params['time-zone'] || 'UTC' %>
+<% if rhel_compatible && os_major > 4 -%>
+services --disabled gpm,sendmail,cups,pcmcia,isdn,rawdevices,hpoj,bluetooth,openibd,avahi-daemon,avahi-dnsconfd,hidd,hplip,pcscd,NetworkManager,firewalld
+<% end -%>
+
+echo "Updating hosts entry.. Done"
+<%= snippet 'network_config_hosts' %>
+
+echo "Adding FSTAB entry.. Done"
+<%= snippet 'fstab_entry' %>
+
+echo "Setting up Remote Execution.. Done"
+<%= snippet('remote_execution_ssh_keys') %>
+
+echo "Configuring EPEL Repository.. Done"
+<%= snippet('epel_repo') %>
+
+
+#update local time
+echo "updating system time"
+/usr/sbin/ntpdate -sub <%= @host.params['ntp-server'] || '192.168.133.200' %>
+/usr/sbin/hwclock --systohc
+
+
+# update all the base packages from the updates repository
+if [ -f /usr/bin/dnf ]; then
+  dnf -y update
+else
+  yum -t -y update
+fi
+
+sync
+
+# Inform the build system that we are done.
+echo "Informing Foreman that we are built"
+wget -q -O /dev/null --no-check-certificate <%= foreman_url('built') %>
+) 2>&1 | tee /root/install.post.log
+exit 0
+
+<%= section_end -%>

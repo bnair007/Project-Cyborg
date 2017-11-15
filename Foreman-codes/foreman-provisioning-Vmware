@@ -1,0 +1,17 @@
+<%#
+kind: snippet
+name: vmware_config
+%>
+
+if [ `dmidecode -t system | grep -i 'Product Name' | awk '{print $3}'` == VMware ]
+then
+if [ `lsb_release -r | awk '{print $2}' | cut -d "." -f1` -eq 6 ]
+then
+echo -e "\nInstallating Vmware Tools on:-\n \nhostname: `hostname -s` \nversion : `lsb_release  -r | awk '{print $2}'`"
+cd /tmp/ && wget http://192.168.133.200/distro-trees/softwares/misc/Vmware_Tools/EL6/vmware-tools-repo-RHEL6-10.1.5-1.el6.x86_64.rpm && rpm -Uvh vmware-tools-repo-RHEL6-10.1.5-1.el6.x86_64.rpm &&  yum install -y vmware-tools-esx-nox
+else
+echo "Its not Version 6, Skipping!!"
+fi
+else
+echo "Its not Vmware, Skipping!!"
+fi

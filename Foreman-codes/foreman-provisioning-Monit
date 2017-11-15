@@ -1,0 +1,25 @@
+<%#
+kind: snippet
+name: monit_config
+%>
+if [ `lsb_release -r| awk '{print $2}'| cut -d "." -f1` -eq 6  ]; then
+yum install monit -y
+
+#  interface
+device=`ip -o link | grep 00:50:56:9f:7a:1c | awk '{print $2;}' | sed s/:$//`
+
+#Download the config and replace the ip and ethernet device name with actuals
+
+#cd /etc/ && wget http://192.168.133.200/distro-trees/softwares/config/monit.conf_backup && sed -i 's/192.168.133.200/<%= @host.ip %>/g' monit.conf_backup && grep -r -l 'eth4' monit.conf_backup | sort | uniq | xargs perl -e "s/eth4/$device/" -pi
+
+cd /etc/ && wget http://192.168.133.200/distro-trees/softwares/config/monit.conf_backup && sed -i 's/192.168.133.200/<%= @host.ip %>/g' monit.conf_backup && sed -i 's/eth4/eth0/g' monit.conf_backup
+#Move the data
+mv -f /etc/monit.conf_backup /etc/monit.conf
+#give Permission
+chmod 0700 /etc/monit.conf
+#Enable on boot
+chkconfig monit on
+
+else
+Echo "Monit integration on Centos/Oracle 7.x is still in progress, Skipping the installation!!"
+fi

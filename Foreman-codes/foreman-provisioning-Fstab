@@ -1,0 +1,9 @@
+<%#
+kind: snippet
+name: fstab_entry
+%>
+
+cat << EOF >> /etc/fstab
+
+#This is test entry
+EOF

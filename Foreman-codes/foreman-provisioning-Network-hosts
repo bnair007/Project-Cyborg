@@ -1,0 +1,32 @@
+<%#
+kind: snippet
+name: network_config_hosts
+%>
+echo "<%= @host %>" > /etc/hostname
+hostname <%= @host %>
+cat > /etc/hosts << EOF
+<%# simple snippet to generate /etc/hosts when provisioning image based systems -%>
+127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4
+::1         localhost localhost.localdomain localhost6 localhost6.localdomain6
+
+<%= @host.ip %>	    <%= @host %>	 <%= @host.shortname %> 
+EOF
+
+
+------------AWS-------------------
+
+
+<%#
+kind: snippet
+name: network_config_hosts_AWS
+%>
+echo "<%= @host %>" > /etc/hostname
+hostname <%= @host %>
+cat > /etc/hosts << EOF
+<%# simple snippet to generate /etc/hosts when provisioning image based systems -%>
+127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4
+::1         localhost localhost.localdomain localhost6 localhost6.localdomain6
+#<%= @host.ip %>	    <%= @host %>	 <%= @host.shortname %> 
+#Internal IP 
+EOF
+echo -e "$(ifconfig eth0 | grep -i inet | head -1 | awk '{print $2}'| cut -d ":" -f2)   <%= @host %>    <%= @host.shortname %>" >> /etc/hosts

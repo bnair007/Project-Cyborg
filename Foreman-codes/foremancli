@@ -1,0 +1,113 @@
+#!/bin/bash
+#     name: Foreman CLI
+#   author: bijith.nair@hitachiconsulting.com
+#     date: 2017-06-16
+#      ver: 1.0.0
+#  purpose: To Administer foreman using CLI
+# chkconfig: - 85 15
+# description: Init script for foreman
+# Copyrights : Hitachi Consulting Cooperation
+
+# Source function library.
+. /etc/rc.d/init.d/functions
+
+createvm() {
+echo -ne "\nEnter the hostname: "
+read hostname
+USER="admin"
+PASS="redhat"
+echo ""
+hammer -u admin -p redhat hostgroup list
+echo -ne "\nPlease enter the host id: "
+read hostid
+hammer -u $USER -p $PASS  host create --name $hostname  --compute-resource-id=1 --hostgroup-id=$hostid
+hammer -u $USER -p $PASS host start --name $hostname.testlab.local
+}
+
+listvm() {
+#echo -e "\n\t\t\t\t\t===========Hosted vm's list=========="
+echo ""
+hammer -u admin -p redhat host list
+echo ""
+}
+
+deletevm() {
+#echo -e "\n\t\t\t\t\t===========Hosted vm's list=========="
+echo ""
+hammer -u admin -p redhat host list
+echo  ""
+echo -ne "Please enter the host id: "
+read hostid
+echo -e "\n~~~ Fetching Details of the host ~~~\n\n
+$(hammer -u admin -p redhat host info --id $hostid | head -12 | grep -vE "Puppet|Id|UUID|report|Network")"
+echo -e "\nNote: \033[0;41mThis action CANNOT be undone. \033[0m\n"
+echo -ne "\nAre you sure you want to delete ? [y/N] "
+read answer
+if [[ $answer != [Yy] ]]; then
+ exit 1
+fi
+hammer -u admin -p redhat host delete --id $hostid
+
+}
+
+migrate() {
+echo -e "\nDevelopment in progress!!!\n"
+}
+
+start ()  {
+systemctl start foreman && if [ $? -eq 0 ]; then echo -e "\nForeman Service :\033[0;32m started \033[0m\n"; else echo -e "\nForeman Service :\033[0;31m Failed \033[0m\n"; fi && sleep 1 &&  systemctl start foreman-proxy && if [ $? -eq 0 ]; then echo -e "Foreman Proxy Service :\033[0;32m started \033[0m\n"; else echo -e "\nForeman Proxy Service :\033[0;31m Failed \033[0m\n"; fi
+}
+
+stop ()   {
+systemctl stop foreman && if [ $? -eq 0 ]; then echo -e "\nForeman Service :\033[0;32m stopped \033[0m\n"; else echo -e "\nForeman Service :\033[0;31m Failed \033[0m\n"; fi && sleep 1 &&  systemctl stop foreman-proxy && if [ $? -eq 0 ]; then echo -e "Foreman Proxy Service :\033[0;32m stopped \033[0m\n"; else echo -e "\nForeman Proxy Service :\033[0;31m Failed \033[0m\n"; fi
+}
+
+status () {
+echo -e "\n\n\033[0;33m -- Foreman service status -- \033[0m\n\n" && systemctl status foreman && echo -e "\n\n\033[0;33m -- Foreman Proxy status -- \033[0m\n\n" && systemctl status foreman-proxy
+}
+restart () {
+systemctl restart foreman && systemctl restart foreman-proxy > /dev/null && if [ $? -eq 0 ];then echo -e "\nForeman Service :\033[0;32m Restarted \033[0m\n";else echo "Service Down"; fi
+}
+
+# See how we were called.
+case "$1" in
+  createvm)
+        createvm
+        ;;
+  listvm)
+        listvm
+        ;;
+  deletevm)
+        deletevm
+        ;;
+  migrate)
+        migrate
+        ;;
+  start)
+       start
+        ;;
+  stop)
+       stop
+        ;;
+  status)
+        status
+        ;;
+  restart)
+        restart
+        ;;
+  *)
+        echo -e "\nUsage: $0\n
+
+ createvm           - Spin up a VM On-premises or on Cloud
+ listvm             - List out VM's hosted in foreman
+ deletevm           - Delete vm hosted On-Premises Or Public/Hybrid Cloud
+ migrate            - Migrate vm's Any to Any$(echo -e " \033[0;32m(In Progress)\033[0m\n")
+ start              - Start foreman and its proxy services
+ stop               - Stop foreman and its proxy services
+ status             - Status of foreman and its services
+ restart	    - restart foreman services
+
+(Please choose from the given options)"
+ exit 2
+esac
+

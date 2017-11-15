@@ -1,0 +1,30 @@
+#!/bin/bash
+
+if [ -z "$1" ]; then
+  echo '' && echo 'Please also provide server name as in config file...' &&
+  exit 1
+fi
+
+retries=0
+repeat=true
+today=$(date)
+
+while "$repeat"; do
+((retries+=1)) &&
+echo -e "\nInitiating App depolyment, Checking Server connection status..."
+echo "Still Down, Retry number $retries..." &&
+today=$(date) &&
+ssh-keygen -R $1.testlab.local
+ssh -q -o "StrictHostKeyChecking no" "$1" "hostname" &&
+#if [[ $2 == app02 ]]; then yum install httpd -y; else echo "No opstion Selected, Skipping."; fi &&
+if [[ $4 == app01 ]]; then ssh -q -o "StrictHostKeyChecking no" "$1" "yum install postgresql-server.x86_64 -y"; else echo "No option Selected, Skipping."; fi &&
+if [[ $2 == app02 ]]; then ssh -q -o "StrictHostKeyChecking no" "$1" "yum install httpd -y"; else echo "No option Selected, Skipping."; fi &&
+repeat=false
+sleep 5
+done
+echo -e "\n~~~ Completion Report ~~~"
+echo -e "\n $1.testlab.local is up.."
+echo -e "\n App deployment successful on $1"
+echo -e "\nTotal number of tries: $retries"
+echo "Last connection at: $today"
+

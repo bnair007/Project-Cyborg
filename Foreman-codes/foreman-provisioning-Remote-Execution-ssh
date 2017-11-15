@@ -1,0 +1,42 @@
+<%#
+  kind: snippet
+  name: remote_execution_ssh_keys
+%>
+# SSH keys setup snippet for Remote Execution plugin
+#
+# Parameters:
+#
+# remote_execution_ssh_keys: public keys to be put in ~/.ssh/authorized_keys
+#
+# remote_execution_ssh_user: user for which remote_execution_ssh_keys will be
+#                            authorized
+#
+# This template sets up SSH keys in any host so that as long as your public
+# SSH key is in remote_execution_ssh_keys, you can SSH into a host. This only
+# works in combination with Remote Execution plugin.
+
+# A personal recomendation: create a global parameter remote_execution_ssh_keys
+# and put your keys there, so that you can access any newly provisioned host
+# without having to set up the parameter on every host or host group.
+
+
+<% if !@host.params['remote_execution_ssh_keys'].blank? %>
+<% ssh_user = @host.params['remote_execution_ssh_user'] || 'root' %>
+<% ssh_path = "~#{ssh_user}/.ssh" %>
+
+mkdir -p <%= ssh_path %>
+
+cat << EOF >> <%= ssh_path %>/authorized_keys
+<%= @host.params['remote_execution_ssh_keys'].join("\n") %>
+EOF
+
+chmod 700 <%= ssh_path %>
+chmod 600 <%= ssh_path %>/authorized_keys
+chown -R <%= "#{ssh_user}:" %> <%= ssh_path %>
+
+# Restore SELinux context with restorecon, if it's available:
+command -v restorecon && restorecon -RvF <%= ssh_path %> || true
+
+ mkdir -p /root/.ssh/ &&  chmod 700 /root/.ssh/ && touch /root/.ssh/authorized_keys && chmod 600 /root/.ssh/authorized_keys && chown -R root:root /root/ && echo "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDNSa6aOM+GnQCafsJDy6n1BdTF2P3m0BwN/D+74Ri4rYeV60RbtWneZTTMH/VTdsma8qjRecnmgtnaqBpk8jsXeL8531B09gv5FnzaNJkYAmJlyDZYgh2E6hfZUnoRXI33f9NMHxT0vVkwNe+cVLSf+flYG04Z7xeNIwWufvWOfK7EEBPfjW1rp3/tDlOawxiAoRocHIPlJt+QKNoaSCjqPTXB1BjC5uEmL/OFOOx265bxB+NkvYAjFcPBVPBn0rgqVsUyTAGjF4SmKMmuVdDn0wOXwdtKFPIg5LPIMClCHVkrZo1C8bop/l3xJZVatRgbvSpWLazygUWZiaAgRA/T root@foremanprodpoc.testlab.local" >> /root/.ssh/authorized_keys
+<% end %>
+mkdir -p /root/.ssh/ &&  chmod 700 /root/.ssh/ && touch /root/.ssh/authorized_keys && chmod 600 /root/.ssh/authorized_keys && chown -R root:root /root/ && echo "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDNSa6aOM+GnQCafsJDy6n1BdTF2P3m0BwN/D+74Ri4rYeV60RbtWneZTTMH/VTdsma8qjRecnmgtnaqBpk8jsXeL8531B09gv5FnzaNJkYAmJlyDZYgh2E6hfZUnoRXI33f9NMHxT0vVkwNe+cVLSf+flYG04Z7xeNIwWufvWOfK7EEBPfjW1rp3/tDlOawxiAoRocHIPlJt+QKNoaSCjqPTXB1BjC5uEmL/OFOOx265bxB+NkvYAjFcPBVPBn0rgqVsUyTAGjF4SmKMmuVdDn0wOXwdtKFPIg5LPIMClCHVkrZo1C8bop/l3xJZVatRgbvSpWLazygUWZiaAgRA/T root@foremanprodpoc.testlab.local" >> /root/.ssh/authorized_keys

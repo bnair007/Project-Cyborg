@@ -1,0 +1,60 @@
+#     name: Foreman CLI Remote Execution
+#   author: bijith.nair@hitachiconsulting.com
+#     date: 2017-05-15
+#      ver: 1.4.0
+#  purpose: To Administer foreman using CLI (Remotely)
+echo ""
+#echo -e "\033[1mForeman CLI...Initialization.\033 \033[0m";
+echo -e "\033[0;44mForeman CLI...Initialization. \033[0m";
+echo ""
+echo "Choose any of the options to proceed :-"
+echo ""
+echo "1. Create New Host."
+echo ""
+echo "2. List Hosts."
+echo ""
+echo "3. Delete Existing Hosts."
+echo ""
+echo "4. Migrate instance from On-prem to Cloud."
+echo ""
+echo -ne "\nSelect your choice [1 | or | 4]? "
+read version
+if [ $version = 1 ]
+then
+echo -ne "\nEnter the hostname: "
+read hostname
+USER="admin"
+PASS="redhat"
+echo ""
+hammer -u admin -p redhat hostgroup list
+echo -ne "\nPlease enter the host id: "
+read hostid
+hammer -u $USER -p $PASS  host create --name $hostname  --compute-resource-id=1 --hostgroup-id=$hostid
+hammer -u $USER -p $PASS host start --name $hostname.testlab.local
+
+elif [ $version = 2 ]
+then
+echo -e "\n\t\t\t\t\t===========Hosted vm's list=========="
+echo ""
+hammer -u admin -p redhat host list
+echo ""
+elif [ $version = 3 ]
+then
+echo -e "\n\t\t\t\t\t===========Hosted vm's list=========="
+echo ""
+hammer -u admin -p redhat host list
+echo  ""
+echo -ne "Please enter the host id: "
+read hostid
+
+echo -e "\n~~~ Fetching Details of the host ~~~\n\n
+$(hammer -u admin -p redhat host info --id $hostid | head -12 | grep -vE "Puppet|Id|UUID|report|Network")"
+echo -e "\nNote: \033[0;41mThis action CANNOT be undone. \033[0m\n"
+echo -ne "\nAre you sure you want to delete ? [y/N] "
+read answer
+if [[ $answer != [Yy] ]]; then
+ exit 1
+fi
+hammer -u admin -p redhat host delete --id $hostid
+fi
+

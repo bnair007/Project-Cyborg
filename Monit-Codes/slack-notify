@@ -1,0 +1,14 @@
+#!/bin/sh
+/usr/bin/curl \
+    -X POST \
+    -s \
+    --data-urlencode "payload={ \
+        \"channel\": \"#mmonit_notification\", \
+        \"username\": \"Monit\", \
+        \"pretext\": \"$MONIT_HOST | $MONIT_DATE\", \
+        \"color\": \"danger\", \
+        \"icon_emoji\": \":ghost:\", \
+        \"text\": \"$MONIT_SERVICE - $MONIT_DESCRIPTION\" \
+    }" \
+    https://hooks.slack.com/services/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
+

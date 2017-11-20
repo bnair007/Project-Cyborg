@@ -81,7 +81,7 @@ createvm() {
 echo -ne "\nEnter the hostname: "
 read hostname
 USER="admin"
-PASS="redhat"
+PASS="******"
 echo ""
 hammer -u admin -p redhat hostgroup list
 echo -ne "\nPlease enter the host id: "

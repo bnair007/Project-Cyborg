@@ -1,0 +1,452 @@
+
+<!DOCTYPE html>
+<html lang="en-US" xml:lang="en-US" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8">
+<meta content="IE=edge" http-equiv="X-UA-Compatible">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="118019878217429" property="fb:app_id">
+<meta property="og:title" content="WordPress" />
+<meta property="og:type" content="product" />
+<meta property="og:url" content="https://bitnami.com/stack/wordpress" />
+<meta property="og:description" content="WordPress is one of the world’s most popular web publishing platforms for building blogs and websites. It can be customized via a wide selection of themes, extensions and plug-ins." />
+<meta property="og:image" content="https://d33np9n32j53g7.cloudfront.net/assets/stacks/wordpress/img/wordpress-stack-110x117-b6153e8959c06604189238b396b86531.png" />
+
+<meta content="WordPress is one of the world’s most popular web publishing platforms for building blogs and websites. It can be customized via a wide selection of themes, extensions and plug-ins." name="twitter:description">
+<meta content="https://d33np9n32j53g7.cloudfront.net/assets/stacks/wordpress/img/wordpress-tweet-image-db7682f0029f47f5e947e11e079a9f33.png" name="twitter:image">
+
+<meta name="csrf-param" content="authenticity_token" />
+<meta name="csrf-token" content="3+VRm+DJzPlNai+/nbTu2uHtyUurMbnw1u5u/I6VojiR3xVGFMGqpNv3FtAHOzrkwmt5W9wfvQsa4zDsYxVeHw==" />
+<script type="text/javascript"> 
+  var _veroq = _veroq || [];
+  _veroq.push(['init', { api_key: '6b05a0160d3124bb9b50b8f8397d8424d033531e' } ]);
+  _veroq.push(['trackPageview']);
+  (function() {var ve = document.createElement('script'); ve.type = 'text/javascript'; ve.async = true; ve.src = '//d3qxef4rp70elm.cloudfront.net/m.js'; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ve, s);})(); 
+</script>
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  
+  ga('create', 'UA-1874455-2', 'auto', {'allowLinker': true});
+  ga('require', 'linker');
+  ga('linker:autoLink', ['bitnamihosting.com'] );
+  ga('send', 'pageview');
+</script>
+
+<title>Centos Deployment</title>
+<link href="https://bitnami.com/stack/wordpress" rel="canonical">
+<link href="https://bitnami.com/stack/wordpress?page=2" rel="next">
+
+<script src="//d33np9n32j53g7.cloudfront.net/assets/webfontloader-2d002b2043d9519c9817ba9e204bb846.js"></script>
+<script>
+  WebFontConfig = {
+    typekit: { id: 'yvn2smh' },
+    google: {
+      families: ['Dosis:200,400,700:latin']
+    },
+    custom: { families: [], urls: [] }
+  }
+</script>
+<script>
+  WebFont.load(WebFontConfig);
+</script>
+<!-- Bitnami UI -->
+<link href="//d1d5nb8vlsbujg.cloudfront.net/bitnami-ui/1.1.1/bitnami.ui.components.min.css" media="screen" rel="stylesheet">
+<link href="//d1d5nb8vlsbujg.cloudfront.net/bitnami-ui/1.1.1/bitnami.ui.min.css" media="screen" rel="stylesheet">
+
+<link rel="stylesheet" media="screen" href="//d33np9n32j53g7.cloudfront.net/assets/application-87eb7dc3a5879ccf3d69f3369149611b.css" />
+<!--[if lte IE 9]>
+<link rel="stylesheet" media="screen" href="//d33np9n32j53g7.cloudfront.net/assets/application_split2-310f5e1d4a45b51cf44b67ba06d5b7f1.css" />
+<link rel="stylesheet" media="screen" href="//d33np9n32j53g7.cloudfront.net/assets/application_split3-a1c3a33cbe0c7ce03f1bcac8106315a9.css" />
+<![endif]-->
+<link href="//d33np9n32j53g7.cloudfront.net/assets/new/favicon-2bbbc6e15146e2e9c667293df6d36e84.png" rel="shortcut icon">
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+<script src="//d33np9n32j53g7.cloudfront.net/assets/ie-94d62b828dbe821eb156a6f46f170a0f.js"></script>
+<![endif]-->
+</head>
+<body class="stacks-show stacks-show-wordpress  stacks show">
+<!-- Try and include mixpanel if the token is present -->
+<!-- start Mixpanel --><script type="text/javascript">(function(e,b){if(!b.__SV){var a,f,i,g;window.mixpanel=b;b._i=[];b.init=function(a,e,d){function f(b,h){var a=h.split(".");2==a.length&&(b=b[a[0]],h=a[1]);b[h]=function(){b.push([h].concat(Array.prototype.slice.call(arguments,0)))}}var c=b;"undefined"!==typeof d?c=b[d]=[]:d="mixpanel";c.people=c.people||[];c.toString=function(b){var a="mixpanel";"mixpanel"!==d&&(a+="."+d);b||(a+=" (stub)");return a};c.people.toString=function(){return c.toString(1)+".people (stub)"};i="disable time_event track track_pageview track_links track_forms register register_once alias unregister identify name_tag set_config people.set people.set_once people.increment people.append people.union people.track_charge people.clear_charges people.delete_user".split(" ");
+for(g=0;g<i.length;g++)f(c,i[g]);b._i.push([a,e,d])};b.__SV=1.2;a=e.createElement("script");a.type="text/javascript";a.async=!0;a.src="undefined"!==typeof MIXPANEL_CUSTOM_LIB_URL?MIXPANEL_CUSTOM_LIB_URL:"file:"===e.location.protocol&&"//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js".match(/^\/\//)?"https://cdn.mxpnl.com/libs/mixpanel-2-latest.min.js":"//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js";f=e.getElementsByTagName("script")[0];f.parentNode.insertBefore(a,f)}})(document,window.mixpanel||[]);
+mixpanel.init("8816242c4de429a669b7048301043668");</script><!-- end Mixpanel -->
+
+  <script type="text/javascript">
+    function track_mixpanel_event(event_id, params) {
+      waitForMixpanel(function() {
+        mixpanel.track(event_id, params);
+        // Update the last event attribute in People API.
+        // https://mixpanel.com/help/reference/javascript#storing-user-profiles
+        mixpanel.people.set({ 'last event': new Date().toISOString() });
+        // We must call identify after set the property
+        mixpanel.identify(mixpanel.get_distinct_id());
+      });
+    };
+
+    function mixpanelIdentify(id) {
+      var oldDistinctId = mixpanel.get_distinct_id();
+      if(id != oldDistinctId) {
+        mixpanel.identify(id);
+      }
+    }
+
+    // This function implements a queue that stores callbacks
+    // until mixpanel is loaded. At that point, it executes all
+    // callbacks in the order they were called.
+    var waitForMixpanel = (function() {
+      var mixpanel_queue = [];
+      var mixpanel_interval = 0;
+
+      function callEnqueuedCallbacks() {
+        mixpanel_queue.forEach(function (callback) {
+          callback.call();
+        });
+
+        clearInterval(mixpanel_interval);
+        mixpanel_interval = 0;
+        mixpanel_queue = [];
+      }
+
+      function mixpanelIsLoaded() {
+        return (typeof(mixpanel) !== 'undefined' && mixpanel.__loaded);
+      }
+
+      return function (callback) {
+        if (mixpanel_interval === 0 && mixpanelIsLoaded()) callback.call();
+        else {
+          mixpanel_queue.push(callback);
+
+          if (mixpanel_interval === 0) {
+            mixpanel_interval = window.setInterval(function () {
+              if (mixpanelIsLoaded()) callEnqueuedCallbacks();
+            }, 100);
+          }
+        }
+      }
+    })();
+  </script>
+
+    <script type="text/javascript">
+      waitForMixpanel(function(){
+
+        if(!isNaN(mixpanel.get_distinct_id())) {
+          mixpanel.reset();
+        }
+      });
+    </script>
+
+<div id="fb-root"></div>
+<header role="navigation">
+<div class="container-fluid">
+<div class="navbar-header">
+<button name="button" type="button" class="navbar-toggle" data-toggle="collapse" data-target="header nav"><span class="sr-only">Toggle navigation</span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+</button><a id="logo" href="https://www.hitachiconsulting.com/"><img alt="Cloud Hosting - Hitachi" data-at2x="http://webapp.bijithdev-labs.com/logo.PNG" src="http://webapp.bijithdev-labs.com/logo.PNG" />
+</a></div>
+<nav>
+<ul>
+<li class="active">
+<a href="http://webapp.bijithdev-labs.com/">Automation</a>
+</li>
+<li>
+<a href="#">Cloud</a>
+</li>
+<li>
+<a href="#">Containers</a>
+</li>
+<li>
+<a href="#">Contact US</a>
+</li>
+</ul>
+</nav>
+</div>
+</header>
+<div id="wrapper">
+<div id="breadcrumbs">
+<div class="container">
+</br>
+<ol><li itemscope="itemscope" itemtype="http://data-vocabulary.org/Breadcrumb"><a itemprop="url" href="/"><span itemprop="title">Home</span></a></li> &rsaquo; <li itemscope="itemscope" itemtype="http://data-vocabulary.org/Breadcrumb"><a itemprop="url" href="http://webapp.bijithdev-labs.com/Infrastructure/"><span itemprop="title">Operating System</span></a></li> &rsaquo; <li itemscope="itemscope" itemtype="http://webapp.bijithdev-labs.com/Infrastructure/"><span itemprop="title">Centos</span></li></ol>
+</div>
+</div>
+
+
+        <script type="text/javascript">
+          if (!window.fbAsyncInit) {
+            window.fbAsyncInit = function() {
+              // init the FB JS SDK
+              FB.init({
+                appId      : '118019878217429', // App ID from the App Dashboard
+                status     : true, // check the login status upon init?
+                logging: true,
+                cookie     : false, // set sessions cookies to allow your server to access the session?
+                xfbml      : true  // parse XFBML tags on this page?
+              });
+
+              FB.Event.subscribe('edge.create', function(href, widget) {
+                if (widget.dom.id == "share_product") {
+                  window.thanks_for_sharing();
+                }
+              });
+            };
+            (function(d, s, id) {
+              if (d.getElementById(id)) return;
+              var js = document.createElement(s);
+              js.src = "//connect.facebook.net/en_US/all.js";
+              js.async=true;
+              document.getElementById('fb-root').appendChild(js);
+            }(document, 'script', 'facebook-jssdk'));
+          }
+        </script>
+    
+</br>
+
+<div class="container" itemscope="" itemtype="http://schema.org/SoftwareApplication">
+<div class="row">
+<div class="col-md-4 col-sm-12 col-md-push-8" id="stack-menu">
+<aside>
+<div class="download-menu">
+<dl class="Cloud_launcher js-cloud-launcher" data-application="WordPress" data-trial="false">
+<!-- We define two links in this view. The first one uses POST to launch the machine directly. -->
+<!-- This link is only available for logged in users. The second link is an indirect link. It redirects -->
+<!-- the users to [GET] /:stack/launch and then to /sign_in. After login, they will return to -->
+<!--[GET]> /:stack/launch where they will be able to launch the demo through the form (POST) <![endif]-->
+
+<div class="Cloud_launcher__trigger btn btn-full btn-with-inset btn-small-text js-cloud-launcher-trigger" data-popover="Use WordPress in your account on your favorite cloud. The cloud provider will charge you for the cloud resources consumed. You have full access to the application and the underlying system account. This option is best when you're ready to use the application for an extended period." data-title="Launch in the cloud">
+<span class="inset-span inset-span-primary">
+<i class="glyphicon glyphicon-cloud"></i>
+</span>
+Launch in the cloud
+<div class="Cloud_launcher__pop js-cloud-launcher-pop">
+<div class="Cloud_launcher__header">
+<h3>Choose your cloud</h3>
+<div class="Cloud_launcher__close js-cloud-launcher-close"></div>
+</div>
+<div class="Cloud_launcher__body clearfix">
+<a class="Cloud_launcher__provider js-cloud-launcher-provider " data-provider="aws" href="https://aws.bitnami.com/launch/wordpress" target="_blank">
+<div class="Cloud_launcher__provider__image aws"></div>
+<div class="Cloud_launcher__provider__name">Amazon Web Services</div>
+</a>
+<a class="Cloud_launcher__provider js-cloud-launcher-provider " data-provider="azure" href="https://azure.bitnami.com/launch/wordpress" target="_blank">
+<div class="Cloud_launcher__provider__image azure"></div>
+<div class="Cloud_launcher__provider__name">Microsoft Azure</div>
+</a>
+<a class="Cloud_launcher__provider js-cloud-launcher-provider " data-provider="google" href="https://google.bitnami.com/launch/wordpress" target="_blank">
+<div class="Cloud_launcher__provider__image google"></div>
+<div class="Cloud_launcher__provider__name">Google Cloud Platform</div>
+</a>
+<a class="Cloud_launcher__provider js-cloud-launcher-provider " data-provider="oracle" href="https://oracle.bitnami.com/launch/wordpress" target="_blank">
+<div class="Cloud_launcher__provider__image oracle"></div>
+<div class="Cloud_launcher__provider__name">Oracle Cloud Infrastructure</div>
+</a>
+
+</a>
+</div>
+<div class="Cloud_launcher__footer">
+<a href="/cloud">Need help deciding?</a>
+</div>
+</div>
+</div>
+<dt class="docker-header">
+<div>
+<i class="glyphicon os-icon-docker"></i>
+Container Deployment
+</div>
+</dt>
+<dd>
+<dl>
+<dd>
+<ul>
+<li class="docker">
+<a class="js-cloud-launcher-docker-link mixpanel-docker-container" application="wordpress" container="centos-docker-wordpress" href="#"><i class="glyphicon os-icon-docker aligned"></i>
+Centos 6 - Latest
+</a></li>
+</ul>
+</dd>
+</dl>
+</dd>
+
+<dt class="download-header" data-popover="Install WordPress on your own laptop or server using our installers or virtual machine images. They are self-contained and include all the components needed to run the application without additional downloads.">
+<a title="Deploy Virtual Machine on-prem" >Deploy in house</a>
+</dt>
+<dd>
+<dl>
+
+<dd class="primary-installer">
+<ul data-recommend-group>
+<li data-default-for-platform="linux">
+<a target="_blank" class="mixpanel-downloaded-app direct_download_link js-cloud-launcher-recommended-installer" data-track-ga="true" data-delayed-href="#" format="installer" href="#"><i class="os-icon-vmware"></i>
+<span>Centos Linux Version 6 - Latest</span>
+</a>
+
+</ul>
+</dd>
+
+<dd>
+<ul>
+
+</ul>
+</dd>
+</dl>
+</dd>
+</dl>
+</div>
+
+<div class="rating-breakdown">
+<div class="panel-heading">
+<h3 class="panel-title">
+Customized Deployment
+</h3>
+</div>
+<div class="panel-body">
+<div class="inline_social_buttons row">
+
+<div class="col-xs-8">
+
+<li class="docker">
+<a class="js-cloud-launcher-docker-link mixpanel-docker-container" application="wordpress" container="centos-docker-wordpress" href="#"><i class="glyphicon os-icon-help aligned"></i>
+Submit the Request
+</a></li>
+         
+</div>
+</div>
+</div>
+</div>
+</aside>
+</div>
+<div class="col-md-7 col-md-pull-4 col-sm-12">
+<article>
+<header class="Stack-badge-header">
+<div class="stack-icon">
+
+<div class="stack-badge ">
+<!-a class="icon" href="#"><img alt="#" data-at1x="http://webapp.bijithdev-labs.com/centos.PNG" data-at2x="http://webapp.bijithdev-labs.com/centos.PNG" hide_image="false" src="http://webapp.bijithdev-labs.com/centos.PNG" />
+<span style="display: none;">
+Centos,CMS,MySQL,PHP,Varnish,Apache,wordpress
+</span>
+<span>
+<!-- ribbon -->
+</span>
+</a></div>
+
+</div>
+<div class="stack-headings">
+<h1>
+<span itemprop="name">Centos Linux</span>
+<span id="favorite">
+<!-- *Only use ajax if the user is logged in, so login form shows if they are not*/ -->
+
+</span>
+<small>
+<a target="_blank" href="https://www.centos.org/">www.centos.org</a>
+|
+Version 6
+</small>
+</h1>
+</div>
+</header>
+
+
+<span itemprop="description">
+<p>The CentOS Project is a community-driven free software effort focused on delivering a robust open source ecosystem, The CentOS Linux distribution is a stable, predictable, manageable and reproducible platform derived from the sources of Red Hat Enterprise Linux (RHEL).</p>
+
+</span>
+<hr /><section>
+<h4>Automated Deployment</h4>
+<p>Hitachi Consulting Devops team provides best in class solution to automatically provision Applications/Operating systems/ Databases on-prem or on cloud with just one click. </p>
+<p>Choose your deployment catalog and select the provider, Thats it!!</p>
+</section>
+<section>
+<h4>Key features of deployment catalog</h4>
+<ul>
+<li>Auto deployment of VM without manual intervention</li>
+<li>Monitoring Tool Integration</li>
+<li>Autohealing Integration</li>
+<li>Patch Management Integration</li>
+<li>Configuration Management Integration</li>
+<li>Automated Configuration of Kernel Parameteres, Hosts Entry, DNS Resolution etc</li>
+<li>Latest Patch Deployment</li>
+<li>Auto IP, Hostname, Domain Assignment</li>
+<li>Encrypted Passwords and Key based Authentication</li>
+<li>Email and Slack Based Notifications</li></ul>
+</section>
+<section>
+</section>
+
+</div>
+</article>
+</div>
+</div>
+<div class="row">
+</div>
+
+</div>
+
+</div>
+<div aria-hidden="true" id="global-modal" role="dialog" style="display:none">
+<div class="modal-dialog">
+<div class="modal-inner">
+<div class="modal-header clearfix">
+<div class="close-modal pull-right" data-dismiss="modal">Close &#10005;</div>
+</div>
+<div class="modal-content"></div>
+</div>
+</div>
+</div>
+<footer>
+<div class="container">
+<div class="row">
+<h5>&copy; Hitachi Consulting Corporation</h5>
+</form>
+
+</div>
+</footer>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="//d33np9n32j53g7.cloudfront.net/assets/application-ad560ca198b99dda49518a8ef6aa0375.js"></script>
+<div aria-hidden="true" aria-labelledby="consoleModalLabel" class="modal fade" id="consoleModal" role="dialog" tabindex="-1">
+<div class="modal-dialog">
+<div class="modal-inner">
+<div class="modal-header">
+<button name="button" type="button" aria-hidden="true" data-dismiss="modal" class="close">&times;</button>
+<h4 class="modal-title" id="consoleModalLabel">Select a cloud&hellip;</h4>
+</div>
+<div class="modal-content">
+<div class="cloud-select padding-t-normal">
+<div class="container">
+<div class="row collapse-on-phone-landscape collapse-on-phone">
+<div class="col-6">
+<a class="button cloud-selector cloud-selector-aws margin-b-normal" data-toggle="tooltip" data-placement="bottom" title="for Amazon Web Services" href="https://aws.bitnami.com">AWS Launchpad</a>
+</div>
+<div class="col-6">
+<a class="button cloud-selector cloud-selector-google margin-b-normal" data-toggle="tooltip" data-placement="bottom" title="for Google Cloud Platform" href="https://google.bitnami.com">Google Launchpad</a>
+</div>
+<div class="col-6">
+<a class="button cloud-selector cloud-selector-azure margin-b-normal" data-toggle="tooltip" data-placement="bottom" title="for Microsoft Azure" href="https://azure.bitnami.com">Azure Launchpad</a>
+</div>
+<div class="col-6">
+<a class="button cloud-selector cloud-selector-oracle margin-b-normal" data-toggle="tooltip" data-placement="bottom" title="for Oracle" href="https://oracle.bitnami.com">Oracle Launchpad</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="modal-footer">
+<a href="/cloud">Need help deciding?</a>
+</div>
+</div>
+</div>
+</div>
+
+
+
+</body>
+</html>

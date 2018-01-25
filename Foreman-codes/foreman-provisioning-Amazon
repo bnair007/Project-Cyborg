@@ -1,5 +1,5 @@
 #! /bin/bash
-
+#Amazon Code
 rootpw --iscrypted <%= root_pass %>
 <% if @host.param_true?('disable-firewall') -%>
 <% else -%>
